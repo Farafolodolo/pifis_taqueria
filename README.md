@@ -44,11 +44,19 @@ docker run -p 8080:8080 pifis-landing
 
 ## 🚂 Deploy en Railway
 
-1. Conecta tu repositorio de GitHub con Railway
-2. Railway detectará automáticamente el Dockerfile
-3. El deploy se hará automáticamente
+### Configuración Rápida:
 
-O usando Railway CLI:
+1. **Conecta tu repositorio de GitHub con Railway**
+2. **Railway detectará automáticamente el Dockerfile**
+3. **Configuración del Puerto:**
+   - Railway asigna automáticamente una variable `PORT`
+   - La aplicación escucha en el puerto **8080** por defecto
+   - El script `start.sh` se adapta automáticamente al puerto de Railway
+
+### Variables de Entorno (Opcional):
+No se requieren variables de entorno adicionales para el funcionamiento básico.
+
+### Usando Railway CLI:
 
 ```bash
 # Instalar Railway CLI
@@ -60,6 +68,24 @@ railway login
 # Deploy
 railway up
 ```
+
+### 🔧 Configuración de Puerto en Railway:
+
+**La aplicación está configurada para:**
+- Puerto por defecto: **8080**
+- Puerto dinámico: Usa la variable `$PORT` de Railway automáticamente
+- No necesitas configurar nada manualmente
+
+Si Railway te pregunta por el puerto, indicate: **8080** o deja que lo detecte automáticamente.
+
+### 📡 Generar Dominio de Prueba:
+
+1. Ve a tu proyecto en Railway
+2. Click en "Settings" > "Public Networking"
+3. Click en "Generate Domain"
+4. Railway generará un dominio tipo: `tu-app.up.railway.app`
+5. ¡Listo! Tu sitio estará accesible en segundos
+
 
 ## 📍 Información del Negocio
 

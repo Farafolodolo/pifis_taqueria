@@ -26,8 +26,12 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 # Copiar configuración personalizada de nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
+# Copiar script de inicio
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
 # Exponer puerto (Railway usa PORT env variable)
 EXPOSE 8080
 
-# Comando para iniciar nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Comando para iniciar con el script que maneja PORT dinámico
+CMD ["/start.sh"]
